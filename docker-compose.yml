@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  bot:
+    build: .
+    container_name: yolo_price_bot
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    environment:
+      - ULTRALYTICS_LOGGING=INFO
+    ports:
+      - "8080:8080"
