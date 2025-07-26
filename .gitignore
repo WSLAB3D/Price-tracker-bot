@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+venv/
+.venv/
+
+# YOLO weights and cache
+*.pt
+runs/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+
+# Logs and temp
+*.log
+*.sqlite3
+*.db
+*.csv
+
+# Docker and OS files
+*.tar
+*.gz
+*.zip
+Dockerfile~
+*.swp
+*.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
