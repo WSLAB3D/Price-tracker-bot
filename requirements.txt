@@ -1,0 +1,14 @@
+---
+
+## 📦 requirements.txt
+
+```plaintext
+discord.py
+ultralytics
+opencv-python
+beautifulsoup4
+aiohttp
+requests
+matplotlib
+apscheduler
+python-dotenv
