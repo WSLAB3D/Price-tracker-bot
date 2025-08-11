@@ -3,6 +3,8 @@ version: '3.9'
 services:
   bot:
     build: .
+    env_file:
+      - .env
     container_name: yolo_price_bot
     restart: unless-stopped
     volumes:
