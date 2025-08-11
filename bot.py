@@ -1,4 +1,15 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True  # Enable if you're reading message content
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
 @bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+    
 async def on_message(message):
     if message.attachments:
         for attachment in message.attachments:
