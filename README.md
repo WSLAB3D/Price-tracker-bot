@@ -1,34 +1,129 @@
 # 🛒 Price Tracker Bot
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
-![Docker](https://img.shields.io/badge/docker-ready-blue)
-![YOLOv8](https://img.shields.io/badge/image--recognition-YOLOv8-green)
-![Discord](https://img.shields.io/badge/integration-Discord-5865F2?logo=discord&logoColor=white)
-![CI](https://img.shields.io/github/actions/workflow/status/WSLAB3D/Price-tracker-bot/ci.yml?label=CI)
-
-Self-hosted Discord bot for tracking supermarket prices via image recognition, live web scraping, and persistent storage. Built with modular components and designed for extensibility.
+A self-hosted Discord bot that tracks supermarket prices using image recognition (YOLOv8), live web scraping, and historical analysis. Designed for automation enthusiasts who want actionable insights delivered straight to Discord.
 
 ---
 
-## 🚀 Features
+## 📦 Features
 
-- 🖼️ YOLOv8-based image recognition of price tags
-- 🔍 Live web scraping of store listings (Woolworths, Coles etc.)
-- 💾 SQLite storage with historical tracking and charting
-- 📊 Discord bot with embedded summaries and alerts
-- 🔐 `.env` config support for secure deployment
-- 🐳 Docker-ready for easy self-hosting
+- 🧠 **YOLOv8 Image Recognition**: Detects products and prices from flyers or shelf photos.
+- 🌐 **Live Web Scraping**: Pulls current prices from online supermarket listings.
+- 📊 **Historical Tracking**: Stores price data for trend analysis and charting.
+- 📡 **Discord Integration**: Responds to commands, sends alerts, and visualizes price changes.
+- 🐳 **Dockerized Deployment**: Easy to run locally or on a server.
+- 🔐 **Secure Token Handling**: Uses `.env` for Discord and API credentials.
 
 ---
 
-## 🧱 Architecture Overview
+## 🚀 Getting Started
 
-```mermaid
-graph TD
-  A[Discord Bot] --> B[Image Recognition (YOLOv8)]
-  A --> C[Scraper Module]
-  B --> D[Price Parser]
-  C --> D
-  D --> E[SQLite Database]
-  E --> F[Charting & Historical Analysis]
-  F --> G[Discord Alerts & Embeds]
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/WSLAB3D/Price-tracker-bot.git
+cd Price-tracker-bot
+```
+
+### 2. Create a Discord Bot Token
+
+- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
+- Create a new application → Add a bot
+- Enable **Message Content Intent** under "Privileged Gateway Intents"
+- Copy the bot token
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+DISCORD_TOKEN=your_discord_bot_token
+```
+
+Ensure `.env` is listed in `.gitignore`.
+
+---
+
+## 🐳 Docker Build & Run
+
+### Build the Docker Image
+
+```bash
+docker build -t price-tracker-bot .
+```
+
+### Run the Container
+
+```bash
+docker run --env-file .env price-tracker-bot
+```
+
+### Or Use Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+---
+
+## 💬 Bot Usage
+
+Once the bot is running and invited to your server, try these commands:
+
+| Command               | Description                                      |
+|----------------------|--------------------------------------------------|
+| `!track [item]`       | Scrapes and returns current price for an item   |
+| `!history [item]`     | Shows price trend over time                     |
+| `!analyze [image]`    | Detects prices from uploaded image              |
+| `!help`               | Lists available commands                        |
+
+---
+
+## 🧠 Architecture Overview
+
+```text
+Discord Bot
+├── YOLOv8 Image Processor
+├── Scraper Module
+├── SQLite Storage
+└── Chart Generator
+```
+
+---
+
+## 📚 Development Notes
+
+- Python 3.11+
+- Dependencies managed via `requirements.txt`
+- YOLOv8 model weights should be placed in `/models`
+- Scraper logic lives in `/scraper`
+- Discord bot logic in `/bot.py`
+
+---
+
+## 🛡️ Security & Rate Limiting
+
+- Tokens and credentials are loaded via `.env`
+- Scraping modules include polite headers and delay logic
+- Discord bot uses minimal permissions
+
+---
+
+## 📈 Future Enhancements
+
+- Multi-store support
+- Interactive chart embeds
+- Receipt OCR
+- Price drop alerts
+- Web dashboard
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, open an issue first to discuss what you’d like to change.
+
+---
+
+## 📄 License
+
+MIT
