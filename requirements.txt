@@ -1,6 +1,3 @@
-## 📦 requirements.txt
-
-```plaintext
 discord.py
 ultralytics
 opencv-python
