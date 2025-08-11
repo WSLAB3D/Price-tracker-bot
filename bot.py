@@ -24,3 +24,6 @@ async def on_message(message):
                 f"📦 Item: `{item}`\n🏪 Coles: {coles}\n🏬 Woolies: {woolies}"
             )
     await bot.process_commands(message)
+    
+# At the end of bot.py
+bot.run(os.getenv("DISCORD_TOKEN"))
