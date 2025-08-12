@@ -1,129 +1,98 @@
-# 🛒 Price Tracker Bot
+🛒 Discord Price Tracker Bot
 
-A self-hosted Discord bot that tracks supermarket prices using image recognition (YOLOv8), live web scraping, and historical analysis. Designed for automation enthusiasts who want actionable insights delivered straight to Discord.
+A self-hosted Python bot that tracks item prices from Coles and Woolworths using live scraping and image recognition (YOLOv8), with Discord integration and historical analysis.
 
----
+🚀 Features
 
-## 📦 Features
+🔍 Live price scraping from Coles & Woolworths
 
-- 🧠 **YOLOv8 Image Recognition**: Detects products and prices from flyers or shelf photos.
-- 🌐 **Live Web Scraping**: Pulls current prices from online supermarket listings.
-- 📊 **Historical Tracking**: Stores price data for trend analysis and charting.
-- 📡 **Discord Integration**: Responds to commands, sends alerts, and visualizes price changes.
-- 🐳 **Dockerized Deployment**: Easy to run locally or on a server.
-- 🔐 **Secure Token Handling**: Uses `.env` for Discord and API credentials.
+🧠 YOLOv8 image recognition for item detection
 
----
+📊 Historical price tracking via SQLite
 
-## 🚀 Getting Started
+💬 Discord bot with dynamic commands
 
-### 1. Clone the Repository
+🕒 Hourly scheduler for automated updates
 
-```bash
-git clone https://github.com/WSLAB3D/Price-tracker-bot.git
-cd Price-tracker-bot
-```
+📁 GitHub-ready structure with CI/CD support
 
-### 2. Create a Discord Bot Token
+⚙️ Setup
 
-- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
-- Create a new application → Add a bot
-- Enable **Message Content Intent** under "Privileged Gateway Intents"
-- Copy the bot token
+1. Clone the repo
 
-### 3. Configure Environment Variables
+git clone https://github.com/yourusername/price-tracker-bot.git
+cd price-tracker-bot
 
-Create a `.env` file in the root directory:
+2. Install dependencies
 
-```env
-DISCORD_TOKEN=your_discord_bot_token
-```
+pip install -r requirements.txt
 
-Ensure `.env` is listed in `.gitignore`.
+3. Configure environment
 
----
+Create a .env file or set environment variables:
 
-## 🐳 Docker Build & Run
+DISCORD_TOKEN=your_bot_token
+DISCORD_CHANNEL_ID=your_channel_id
 
-### Build the Docker Image
+4. Start the bot
 
-```bash
-docker build -t price-tracker-bot .
-```
+python bot.py
 
-### Run the Container
+5. Start the scheduler (optional)
 
-```bash
-docker run --env-file .env price-tracker-bot
-```
+python scheduler.py
 
-### Or Use Docker Compose
+💬 Bot Commands
 
-```bash
-docker-compose up --build
-```
+Command
 
----
+Description
 
-## 💬 Bot Usage
+!trackadd <item>
 
-Once the bot is running and invited to your server, try these commands:
+Adds an item to the tracked list
 
-| Command               | Description                                      |
-|----------------------|--------------------------------------------------|
-| `!track [item]`       | Scrapes and returns current price for an item   |
-| `!history [item]`     | Shows price trend over time                     |
-| `!analyze [image]`    | Detects prices from uploaded image              |
-| `!help`               | Lists available commands                        |
+!price <item>
 
----
+Scrapes and returns current prices
 
-## 🧠 Architecture Overview
+!history <item>
 
-```text
-Discord Bot
-├── YOLOv8 Image Processor
-├── Scraper Module
-├── SQLite Storage
-└── Chart Generator
-```
+Shows historical price chart (WIP)
 
----
+!listtracked
 
-## 📚 Development Notes
+Lists all currently tracked items
 
-- Python 3.11+
-- Dependencies managed via `requirements.txt`
-- YOLOv8 model weights should be placed in `/models`
-- Scraper logic lives in `/scraper`
-- Discord bot logic in `/bot.py`
+🕒 Scheduler
 
----
+Runs hourly and posts updates to your Discord channel:
 
-## 🛡️ Security & Rate Limiting
+📦 `TimTams` update:
+🏪 Coles: $3.50
+🏬 Woolies: $3.60
 
-- Tokens and credentials are loaded via `.env`
-- Scraping modules include polite headers and delay logic
-- Discord bot uses minimal permissions
+Uses schedule to trigger run_scrape() every hour. See scheduler.py.
 
----
+📁 Repo Structure
 
-## 📈 Future Enhancements
+price-tracker-bot/
+├── bot.py               # Discord bot logic
+├── scheduler.py         # Hourly scraping + Discord updates
+├── scraper.py           # Coles/Woolies scraping functions
+├── yolo.py              # YOLOv8 image recognition
+├── storage.py           # SQLite storage and retrieval
+├── tasks.py             # Shared scraping logic
+├── tracked_items.txt    # List of tracked items
+├── requirements.txt     # Python dependencies
+└── README.md            # Project documentation
 
-- Multi-store support
-- Interactive chart embeds
-- Receipt OCR
-- Price drop alerts
-- Web dashboard
+🛠️ Dev Tips
 
----
+✅ Use .env for secrets and tokens
 
-## 🤝 Contributing
+🐳 Dockerize for deployment (optional)
 
-Pull requests are welcome! For major changes, open an issue first to discuss what you’d like to change.
+🧪 Add unit tests for scraper and bot logic
 
----
-
-## 📄 License
-
-MIT
+📈 Extend with charts, alerts, or web dashboard
