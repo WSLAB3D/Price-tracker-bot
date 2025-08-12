@@ -1,9 +1,22 @@
-discord.py
-ultralytics
-opencv-python
-beautifulsoup4
-aiohttp
-requests
-matplotlib
-apscheduler
-python-dotenv
+# Discord bot
+discord.py==2.3.2
+
+# Web scraping
+requests==2.31.0
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# Image recognition (YOLOv8 via Ultralytics)
+ultralytics==8.0.198
+opencv-python==4.8.0.76
+numpy==1.24.4
+
+# Scheduling
+schedule==1.2.1
+
+# SQLite support
+sqlalchemy==2.0.21
+
+# Misc
+python-dotenv==1.0.0
+matplotlib==3.8.0  # for historical price charts (WIP)

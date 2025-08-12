@@ -85,6 +85,7 @@ price-tracker-bot/
 ├── tasks.py             # Shared scraping logic
 ├── tracked_items.txt    # List of tracked items
 ├── requirements.txt     # Python dependencies
+├── Dockerfile           # Docker configuration
 └── README.md            # Project documentation
 
 🛠️ Dev Tips
@@ -96,3 +97,22 @@ price-tracker-bot/
 🧪 Add unit tests for scraper and bot logic
 
 📈 Extend with charts, alerts, or web dashboard
+
+🛠️ CI/CD Badges
+
+Badge
+
+Description
+
+
+
+Continuous Integration status
+
+
+
+Docker image pull count
+
+
+
+Test coverage percentage
+
